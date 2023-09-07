@@ -6,4 +6,4 @@ I am Noah a Senior in INFO from Littleton, CO
 
 Fun Facts:
 
-Played hockey since I was 8, and a huge nerd for Formula 1. I love live music and plan on traveling for a bit once I graduate.
+I have played hockey since I was 8, and am huge nerd for Formula 1. I love live music and plan on traveling for a bit once I graduate.
