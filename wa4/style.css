@@ -32,7 +32,8 @@ html {
     border-radius: 1.5em;
     padding: 1.5em;
   }
-/*Header and Footer*/
+
+  /*Header and Footer*/
 
 .card header,.card2 header{
   background-image: linear-gradient(to bottom,rgba(0,0,0,0.1), rgba(0,0,0,0));
