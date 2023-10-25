@@ -1,0 +1,60 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+nav{
+    height: 50vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:20px;
+    background-color: navy;
+    transition-property:background-color;
+}
+nav a{
+    width:10vw;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+}
+
+
+img{
+    width:30vw;
+    height: 30vh;
+    animation-duration: 3s;
+    animation-name: car2move;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#red-ball{
+    background-color: blue;
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+    position: absolute;
+    left:5vw;
+    top:0;
+}
+
+@keyframes car2move{
+    from{
+        margin-left: -75%;
+    }
+    
+    to{
+        margin-left: 75%;
+    }
+}
+
+#red-ball:hover {
+    background-color: blueviolet;
+}
+
+nav:hover{
+    background-color: purple;
+}
