@@ -1,0 +1,39 @@
+body {
+    background-color: black;
+    color: #333;
+    margin: 0;
+    font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
+    color: white;
+  }
+
+  .grid {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 980px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+@media screen and (min-width:1500px){
+    .grid {
+      margin: 0 auto;
+      padding: 0 20px;
+      max-width: 980px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  @media screen and (max-width:400px){
+    .grid {
+      margin: 0 auto;
+      padding: 0 20px;
+      max-width: 980px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
