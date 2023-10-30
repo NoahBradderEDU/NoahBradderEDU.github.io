@@ -1,8 +1,23 @@
 body {
-    background-color: black;
+    background-color:lightyellow;
     margin: 0;
     font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
-    color: white;
+    color: black;
+  }
+
+  .top {
+    text-align: center;
+  }
+
+  .box{
+    border-style:solid;
+    width: fit-content;
+    height: fit-content;
+    background-color: pink;
+    border-color: palevioletred;
+    padding:1em;
+    border-width: 1em;
+    margin-top: 2em;
   }
 
   .grid {
