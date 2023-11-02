@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<h1 id="demo" onclick="myFunction()">Click to see what happens.</h1>
+<h2 id="demo2" onmouseover="myFunction2()">No hover me!!!</h2>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").style.color = "orange";
+}
+</script>
+
+<script>
+    function myFunction2() {
+      document.getElementById("demo2").innerHTML = document.getElementById("demo2").innerHTML+"No hover me!!!";
+    }
+    </script>
+
+</body>
+</html>
