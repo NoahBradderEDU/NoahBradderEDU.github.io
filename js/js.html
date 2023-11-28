@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Numbers</title>
+</head>
+<body>
+    <div id="container">
+        <input type="range" min="1" max="9999999999" value="50" class="myslider" id="sliderRange">
+        <p>Phone Number: <span id="demo"></span></p>
+    </div>
+
+    <script>
+        var rangeslider = document.getElementById("sliderRange"); 
+        var output = document.getElementById("demo"); 
+        output.innerHTML = rangeslider.value; 
+  
+        rangeslider.oninput = function() { 
+        output.innerHTML = this.value; 
+        } 
+    </script>
+</body>
+</html>
