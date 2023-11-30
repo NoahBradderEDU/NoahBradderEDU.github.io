@@ -6,7 +6,7 @@
     <title>Slider Concatenation</title>
 </head>
 <body>
-    <input type="range" id="slider1" min="000" max="999" value="50">
+    <input type="range" id="slider1" min="000" max="9999" value="50">
     <input type="range" id="slider2" min="000" max="999" value="50">
     <input type="range" id="slider3" min="000" max="999" value="50">
     
@@ -21,7 +21,7 @@
             var slider3Value = document.getElementById("slider3").value;
 
             // Concatenate values into a string
-            var resultString = "Phone Number: " + slider1Value + slider2Value +  slider3Value;
+            var resultString = "Phone Number: " + slider2Value + "-" + slider3Value + "-" + slider1Value;
 
             // Display the result in the result element
             document.getElementById("result").textContent = resultString;
