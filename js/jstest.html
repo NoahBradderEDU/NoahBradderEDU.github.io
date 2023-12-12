@@ -8,25 +8,50 @@
         /* Add some styling for the sliders to make them visible */
         input[type="range"] {
             display: block;
-            margin: 10px;
+            margin: 40px;
+            position: relative;
+            animation: slideRight 5s linear infinite alternate;
+        }
+
+        @keyframes slideRight {
+            from {
+                left: 0;
+            }
+            to {
+                left: calc(100% - 50px); /* Adjust the width of the sliders as needed */
+            }
+        }
+
+        button {
+            display: block;
+            margin: 10px auto; /* Center horizontally */
+            padding: 10px 20px; /* Adjust padding for size */
+            font-size: 16px; /* Adjust font size */
+        }
+
+        #result {
+            text-align: center;
+            font-size: 48px; /* Adjust font size */
+            margin: 20px 0; /* Add space around the result */
         }
     </style>
 </head>
 <body>
-    <input type="range" id="slider1" min="0" max="9" value="1">
-    <input type="range" id="slider2" min="0" max="9" value="1">
-    <input type="range" id="slider3" min="0" max="9" value="1">
-    <input type="range" id="slider4" min="0" max="9" value="1">
-    <input type="range" id="slider5" min="0" max="9" value="1">
-    <input type="range" id="slider6" min="0" max="9" value="1">
-    <input type="range" id="slider7" min="0" max="9" value="1">
-    <input type="range" id="slider8" min="0" max="9" value="1">
-    <input type="range" id="slider9" min="0" max="9" value="1">
-    
-    <p id="result"></p>
+    <div style="position: relative;">
+        <input type="range" id="slider1" min="0" max="999" value="111">
+        <button id="submit1">Submit</button>
+
+        <input type="range" id="slider2" min="0" max="999" value="111">
+        <button id="submit2">Submit</button>
+
+        <input type="range" id="slider3" min="0" max="9999" value="1111">
+        <button id="submit3">Submit</button>
+    </div>
 
     <!-- Add a submit button -->
-    <button id="submitButton">Submit</button>
+    <button id="submitButton">Submit All</button>
+
+    <p id="result"></p>
 
     <script>
         // Function to update the concatenated string
@@ -35,53 +60,62 @@
             var slider1Value = document.getElementById("slider1").value;
             var slider2Value = document.getElementById("slider2").value;
             var slider3Value = document.getElementById("slider3").value;
-            var slider4Value = document.getElementById("slider4").value;
-            var slider5Value = document.getElementById("slider5").value;
-            var slider6Value = document.getElementById("slider6").value;
-            var slider7Value = document.getElementById("slider7").value;
-            var slider8Value = document.getElementById("slider8").value;
-            var slider9Value = document.getElementById("slider9").value;
 
             // Concatenate values into a string
-            var resultString = "Phone Number: " + slider1Value + slider2Value + slider3Value + "-" + slider4Value + slider5Value + slider6Value + "-" + slider7Value + slider8Value + slider9Value;
+            var resultString = "Phone Number: (" + slider1Value + ")" + " - " + slider2Value + " - " + slider3Value;
 
             // Display the result in the result element
             document.getElementById("result").textContent = resultString;
         }
 
-        // Function to make sliders bounce around
-        function bounceSliders() {
-            var sliders = ["slider1", "slider2", "slider3", "slider4", "slider5", "slider6", "slider7", "slider8", "slider9"];
+        // Function to handle submit button click for a specific slider
+        function submitButtonClick(sliderId) {
+            var slider = document.getElementById(sliderId);
+            var submitButton = document.getElementById("submit" + sliderId.charAt(sliderId.length - 1));
 
-            sliders.forEach(function(sliderId) {
-                var slider = document.getElementById(sliderId);
-                // Update slider value randomly
-                slider.value = Math.floor(Math.random() * 10);
-            });
+            // Disable the slider
+            slider.disabled = true;
+            // Disable the submit button
+            submitButton.disabled = true;
 
-            // Update the result after bouncing
+            // Update the result after submission
             updateResult();
         }
 
-        // Function to handle submit button click
-        function submitButtonClick() {
-            alert("Phone Number Submitted: " + document.getElementById("result").textContent);
-            // You can perform additional actions here, such as sending the data to a server.
+        // Function to handle submit button click for all sliders
+        function submitAllButtonClick() {
+            // Disable all sliders and submit buttons
+            for (var i = 1; i <= 3; i++) {
+                var slider = document.getElementById("slider" + i);
+                var submitButton = document.getElementById("submit" + i);
+
+                slider.disabled = true;
+                submitButton.disabled = true;
+            }
+
+            // Update the result after submission
+            updateResult();
         }
 
-        // Add event listeners to sliders
-        document.getElementById("slider1").addEventListener("input", updateResult);
-        document.getElementById("slider2").addEventListener("input", updateResult);
-        document.getElementById("slider3").addEventListener("input", updateResult);
+        // Add event listeners to sliders and submit buttons
+        for (var i = 1; i <= 3; i++) {
+            var sliderId = "slider" + i;
+            var submitButtonId = "submit" + i;
 
-        // Add event listener to submit button
-        document.getElementById("submitButton").addEventListener("click", submitButtonClick);
+            document.getElementById(sliderId).addEventListener("input", updateResult);
+            document.getElementById(submitButtonId).addEventListener("click", function(id) {
+                return function() {
+                    submitButtonClick(id);
+                };
+            }(sliderId));
+        }
 
-        // Bounce sliders every 2 seconds (you can adjust the timing as needed)
-        setInterval(bounceSliders, 2000);
+        // Add event listener to submit all button
+        document.getElementById("submitButton").addEventListener("click", submitAllButtonClick);
 
         // Initial update
         updateResult();
     </script>
 </body>
 </html>
+
