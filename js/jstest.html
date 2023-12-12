@@ -4,13 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Numbers</title>
+    <style>
+        /* Add some styling for the sliders to make them visible */
+        input[type="range"] {
+            display: block;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <input type="range" id="slider1" min="000" max="9999" value="50">
-    <input type="range" id="slider2" min="000" max="999" value="50">
-    <input type="range" id="slider3" min="000" max="999" value="50">
+    <input type="range" id="slider1" min="0" max="9" value="1">
+    <input type="range" id="slider2" min="0" max="9" value="1">
+    <input type="range" id="slider3" min="0" max="9" value="1">
+    <input type="range" id="slider4" min="0" max="9" value="1">
+    <input type="range" id="slider5" min="0" max="9" value="1">
+    <input type="range" id="slider6" min="0" max="9" value="1">
+    <input type="range" id="slider7" min="0" max="9" value="1">
+    <input type="range" id="slider8" min="0" max="9" value="1">
+    <input type="range" id="slider9" min="0" max="9" value="1">
     
     <p id="result"></p>
+
+    <!-- Add a submit button -->
+    <button id="submitButton">Submit</button>
 
     <script>
         // Function to update the concatenated string
@@ -19,18 +35,50 @@
             var slider1Value = document.getElementById("slider1").value;
             var slider2Value = document.getElementById("slider2").value;
             var slider3Value = document.getElementById("slider3").value;
+            var slider4Value = document.getElementById("slider4").value;
+            var slider5Value = document.getElementById("slider5").value;
+            var slider6Value = document.getElementById("slider6").value;
+            var slider7Value = document.getElementById("slider7").value;
+            var slider8Value = document.getElementById("slider8").value;
+            var slider9Value = document.getElementById("slider9").value;
 
             // Concatenate values into a string
-            var resultString = "Phone Number: " + slider2Value + "-" + slider3Value + "-" + slider1Value;
+            var resultString = "Phone Number: " + slider1Value + slider2Value + slider3Value + "-" + slider4Value + slider5Value + slider6Value + "-" + slider7Value + slider8Value + slider9Value;
 
             // Display the result in the result element
             document.getElementById("result").textContent = resultString;
+        }
+
+        // Function to make sliders bounce around
+        function bounceSliders() {
+            var sliders = ["slider1", "slider2", "slider3", "slider4", "slider5", "slider6", "slider7", "slider8", "slider9"];
+
+            sliders.forEach(function(sliderId) {
+                var slider = document.getElementById(sliderId);
+                // Update slider value randomly
+                slider.value = Math.floor(Math.random() * 10);
+            });
+
+            // Update the result after bouncing
+            updateResult();
+        }
+
+        // Function to handle submit button click
+        function submitButtonClick() {
+            alert("Phone Number Submitted: " + document.getElementById("result").textContent);
+            // You can perform additional actions here, such as sending the data to a server.
         }
 
         // Add event listeners to sliders
         document.getElementById("slider1").addEventListener("input", updateResult);
         document.getElementById("slider2").addEventListener("input", updateResult);
         document.getElementById("slider3").addEventListener("input", updateResult);
+
+        // Add event listener to submit button
+        document.getElementById("submitButton").addEventListener("click", submitButtonClick);
+
+        // Bounce sliders every 2 seconds (you can adjust the timing as needed)
+        setInterval(bounceSliders, 2000);
 
         // Initial update
         updateResult();
